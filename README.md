@@ -8,3 +8,4 @@
 
 * 스프링 핵심 원리 - 기본편   
   > [객체 지향 설계와 스프링](https://github.com/keke5149/2023_Study/blob/main/Spring/TIL_230104.md)
+  > [스프링 핵심 원리 이해1 - 예제](https://github.com/keke5149/2023_Study/blob/main/Spring/TIL_230105.md)
