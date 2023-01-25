@@ -14,5 +14,4 @@ for i in range(2,N+1):
         elif j == 9:
             dp[i][j] = dp[i-1][8]
 
-print(dp[N])
 print(sum(dp[N])%1000000000)

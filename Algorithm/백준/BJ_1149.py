@@ -1,5 +1,6 @@
 N = int(input())
 
+#초기값 설정
 A = []
 for i in range(N):
     A.append(list(map(int, input().split())))   
