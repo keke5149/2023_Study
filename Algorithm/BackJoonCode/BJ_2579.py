@@ -12,7 +12,7 @@ elif N == 2:
 else:
     dp[1] = cost[1]
     dp[2] = cost[1] + cost[2]
-    dp[3] = max(dp[2] + cost[3], dp[1] + cost[3])
+    dp[3] = max(cost[2] + cost[3], cost[1] + cost[3])
     for i in range(4, N+1):
         dp[i] = max(dp[i-3] + cost[i] + cost[i-1], dp[i-2] + cost[i])
 
