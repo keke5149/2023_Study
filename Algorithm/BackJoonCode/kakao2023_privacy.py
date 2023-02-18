@@ -1,30 +1,39 @@
+#문자열 today
+#1차원 문자열 배열 terms
+#1차원 무자열 배열 privacies
+#1차원 정수 배열 반환
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-def cal_expire(date, term, term_cases):
-    return date + relativedelta(months=term_cases[term])
+def change_date(today):
+    return datetime.strptime(today, "%Y.%m.%d")
 
-def calculate_(today_, term_cases, privacies):
-    pIdx = []
-    for index, privacy in enumerate(privacies, start=1):
-        pDate, pTerm = privacy.split()
-        pDate = datetime.strptime(pDate, "%Y.%m.%d")
-        pExpired = cal_expire(pDate, pTerm, term_cases)
-        if today_ >= pExpired:
-            pIdx.append(index)
-    return pIdx
+
+def check_expired(pp, policy, date):
+    date = change_date(date)
+    return date + relativedelta(months=policy[pp])
+
+def check_privacies(today, policies, privacies):
+    #for index, privacy in enumerate(privacies, start=1):
+    result = []
+    for privacy in privacies:
+        date, p = privacy.split()
+        expired = check_expired(p, policy, date)
+        if today >= expired:
+            result.append(privacies.index(privacy)+1)
+    return result
     
-def get_terms(terms):
-    term_cases = {}
-    for i in terms:
-        term_case, term_length = i.split()
-        term_cases[term_case] = int(term_length)
-    return term_cases
+def make_dic(terms):
+    policy = {}
+    for term in terms:
+        p, l = term.split()
+        policy[p] = int(l)
+    return policy
 
 def solution(today, terms, privacies):
     
-    today_ = datetime.strptime(today, "%Y.%m.%d")
-    term_dic = get_terms(terms)
-    answer = calculate_(today_, term_dic, privacies)
+    today_ = change_date(today)
+    policies = make_dic(terms)
+    answer = check_privacies(today_, policies, privacies)
     
     return answer
