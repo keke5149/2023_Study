@@ -39,7 +39,7 @@ def game(idx):
         if checkNumber(x, y, i):
             sudoku[x][y] = i
             game(idx + 1)
-            sudoku[x][y] = 0
+            sudoku[x][y] = 0 #현재 빈 칸에 아무것도 안 들어가면 이전 빈칸에 잘못 넣은 것 -> 현재 칸을 0으로 다시 두고 이전으로 돌아감
 game(0)
 
 #python3으로 하면 시간 초관데 pypy3로 하면 통과(1780ms)
