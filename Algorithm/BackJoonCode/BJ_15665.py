@@ -4,13 +4,12 @@ numbers = list(set(map(int, sys.stdin.readline().split())))
 numbers.sort()
 answer = []
 
-def count(cnt):
-    if len(answer) == m: #수열 길이 m 만족하면 출력
+def count():
+    if len(answer) == m: #함수 한번 돌릴 때마다 길이 체크 -> 결과 리스트(answer) 프린트
         print(*answer)
         return
-    cnt +=  1
-    for i in numbers:
+    for i in numbers: #정렬된 리스트 numbers에서 answer의 0번째 자리부터 하나씩 붙여나감
         answer.append(i)
-        count(cnt)
+        count()
         answer.pop()
-count(0)
+count()

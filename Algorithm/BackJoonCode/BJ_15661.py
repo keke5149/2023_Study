@@ -1,13 +1,15 @@
+#멤버 조합 1명~n//2명
+#mnv로 제일 적은 능력치차 유지
+#함수
 from itertools import combinations
 import sys
 
 n = int(sys.stdin.readline())
-visited = [0]*n
 member = list(i for i in range(n))
 arr = []
 for i in range(n):
     arr.append(list(map(int, sys.stdin.readline().split())))
-minValue = 10000
+mnv = 10000
 
 def sum_team(team):
     answer = 0
@@ -20,16 +22,14 @@ def sum_team(team):
 # 멤버 조합
 for i in range(1, n//2 + 1):
     member_comb = combinations(member, i)
-    minVal = 10000
-
     for j in member_comb:
         start = list(j)
         link = list(set(member) - set(start))
         sumstart = sum_team(start)
         sumlink = sum_team(link)
-        minValue = min(minValue, abs(sumstart-sumlink))
+        mnv = min(mnv, abs(sumstart-sumlink))
         
-print(minValue)
-#시간초과
+print(mnv)
+#python3은 시간초과, pypy3은 통과
 
 
