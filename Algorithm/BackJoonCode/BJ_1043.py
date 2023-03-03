@@ -29,11 +29,10 @@ for p in party:
 print(count)
 '''
 import sys
+input = sys.stdin.readline
 n, m = map(int, input().split())
-truth = set(sys.stdin.readline().split()[1:])
-party = []
-for i in range(m):
-    party.append(set(sys.stdin.readline().split()[1:]))
+truth = set(input().split()[1:])
+party = [set(input().split()[1:]) for _ in range(m)]
 count = 0
 
 for i in range(m):
