@@ -1,14 +1,17 @@
 #dfs/깊이 우선 탐색/다음 분기로 넘어가기 전에 모든 노드를 탐색/막히면 이전 노드로 되돌아가 기록 리셋, 재탐색/visited
 import sys
 n, m = map(int, input().split())
-numbers = []
-for _ in range(n):
-    numbers.append(list(map(int, sys.stdin.readline().split())))
+numbers = [input().strip() for i in range(n)]
 dx = [1, -1, 0, 0]
 dy = [0, 0, 1, -1]
-mx = 0 #블럭 밑의 숫자들의 합(최대, 결과)
-inimxnum = max(map(max, numbers)) #numbers 최댓값
+mx = 0
+inimxnum = max(map(max, numbers)) #numbers 최댓값(가지치기용)
 visited = [[0]*m for i in range(n)]
+
+# ㅏㅓㅗㅜ를 제외하곤 
+# 정사각형1에 정사각형2를 이어붙이고
+# 정사각형2에서 상하좌우에 정사각형3을 이어붙이는 식으로 모양을 만들 수 있음
+# ㅏㅓㅗㅜ -> 정사각형2에 정사각형3을 붙인 후 정사각형2로 돌아옴
 
 def dfs(x, y, count, total):#(x, y) 현재 좌표
     global mx
@@ -37,6 +40,7 @@ def dfs(x, y, count, total):#(x, y) 현재 좌표
 
 for i in range(n):
     for j in range(m): #모든 좌표에 대해
+        #정사각형1
         visited[i][j] = 1
         dfs(i, j, 1, numbers[i][j]) #탐색 시작
         visited[i][j] = 0 #초기화
