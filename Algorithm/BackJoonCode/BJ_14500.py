@@ -1,7 +1,8 @@
 #dfs/깊이 우선 탐색/다음 분기로 넘어가기 전에 모든 노드를 탐색/막히면 이전 노드로 되돌아가 기록 리셋, 재탐색/visited
 import sys
+input = sys.stdin.readline
 n, m = map(int, input().split())
-numbers = [input().strip() for i in range(n)]
+numbers = [list(map(int, input().split())) for i in range(n)]
 dx = [1, -1, 0, 0]
 dy = [0, 0, 1, -1]
 mx = 0

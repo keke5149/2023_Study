@@ -22,3 +22,35 @@ for i in range(2, n+1): #i: n보다 작거나 같은 숫자, 연산 결과로서
 #idp를 모두 채움
 print(dp[n][0]) #n까지의 연산횟수
 print(*reversed(dp[n][1]))
+
+'''
+# @mingulmangul 풀이 - 엄청 빠름
+
+def solution2(N):
+    q = deque([N])
+    dp = [0] * (N+1)
+    while q:
+        n = q.popleft()
+        # 1에 도착했으면
+        if n == 1:
+            # N까지 거슬러 올라가기
+            answer = deque([n])
+            while n != N:
+                n = dp[n]
+                answer.appendleft(n)
+            # 출력
+            print(len(answer) - 1)
+            print(*answer)
+            return
+
+        # 아직 방문한 적 없으면, 방문 + 직전 노드 저장
+        if n % 3 == 0 and dp[n//3] == 0:
+            dp[n//3] = n
+            q.append(n//3)
+        if n % 2 == 0 and dp[n//2] == 0:
+            dp[n//2] = n
+            q.append(n//2)
+        if dp[n-1] == 0:
+            dp[n-1] = n
+            q.append(n-1)
+'''
