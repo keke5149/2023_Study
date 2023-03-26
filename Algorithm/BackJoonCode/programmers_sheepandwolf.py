@@ -30,6 +30,7 @@ def solution(info, edges):
 
             
 '''
+#visited 
 def solution(info, edges):
     global answer
     visited = [0] * len(info)
