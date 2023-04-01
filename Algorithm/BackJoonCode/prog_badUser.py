@@ -24,6 +24,7 @@ def solution(user_id,banned_id):
     return len(answer)
 
 '''
+#불량 사용자에 모양이 같은 게 여러 개인 경우//*rodo(frodo), *rodo(crodo) 처리 못함
 def solution(user_id, banned_id):
     dic = {}
     for idx, ban in zip(range(len(banned_id)), banned_id):

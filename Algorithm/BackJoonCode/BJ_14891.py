@@ -10,7 +10,7 @@ k = int(input())
 rotate = [list(map(int, input().split())) for _ in range(k)] #1:시계, -1:반시계
 
 for idx, dir in rotate:
-    flag = {} #판단 다 하고 진짜 회전할 때 씀
+    flag = {} #판단 다 하고 진짜 회전할 때 씀 //그냥 리스트로 해도 ㅇㅋ
     flag[idx] = dir
     check = deque() #양옆에서 돌아가는 거 있으면 넣음
     check.append([idx, dir])

@@ -1,6 +1,6 @@
 from string import ascii_uppercase
 alpha = list(ascii_uppercase)
-dic = {}
+dic = {} #걍 alpha 리스트 그대로 쓰기;
 for i in range(1, 27):
 	dic[i] = alpha[i-1]
 user_input = input()
